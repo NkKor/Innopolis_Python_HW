@@ -39,6 +39,16 @@ for i in range(0,len(s)):
 print(frase)
 
 # Урок 2 Задача 4 ---------------------------------------------------
-
+n = int(input())  # Количество студентов
+k = int(input())  # Количество сочинений
+works = []
+for i in range(0, n):
+    student_works = input().split()
+    works.append(set(student_works))
+common_works = works[0]
+for i in range(1, n):
+    common_works = common_works.intersection(works[i]) # Поиск пересечений
+print(*common_works)
 
 # Урок 2 Задача 5 ---------------------------------------------------
+
