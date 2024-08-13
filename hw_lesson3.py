@@ -54,3 +54,25 @@ for i in range(0,n):
     print(f"Порядковый номер числа - {m[i]}, значение - {fibo(m[i])}")
 
 # Урок 3 Задача 5 ---------------------------------------------------
+def fibo_decorator(func):
+    memory = {}
+    def wrapper(n):
+        if n in memory:
+            return memory[n]
+        else:
+            result = func(n)
+            memory[n] = result
+        return result
+    return wrapper
+n = int(input())
+m = []
+for i in range(0,n):
+    m.append(int(input())) 
+@fibo_decorator
+def fibo(n: int) -> int:
+    if n <= 1:
+        return n
+    else:
+        return fibo(n-1) + fibo(n-2)
+for i in range(0,n):
+    print(f"Порядковый номер числа - {m[i]}, значение - {fibo(m[i])}")
