@@ -51,4 +51,15 @@ for i in range(1, n):
 print(*common_works)
 
 # Урок 2 Задача 5 ---------------------------------------------------
-
+n = int(input())
+students = {}
+for i in range(n):
+    s = input()
+    x, y, z, k = (int(i) for i in s.split(' '))
+    coord = (x, y, z)
+    if coord in students.keys():
+        students[coord].add(k) # Если студент есть в списке, добавляем к нему работу
+    else:
+        students[coord] = {k} # Если студента нет, добавляем нового студента и работу
+for coord, work in students.items():
+    print(f"Student {coord}: {work}")
