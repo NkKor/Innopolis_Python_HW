@@ -1,0 +1,1 @@
+print(*tuple(filter(lambda x: 10 < x < 20, map(int,input().split()))))
