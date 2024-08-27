@@ -1,11 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from IPython.core.pylabtools import figsize
+from holoviews.plotting.bokeh.styles import alpha
+from matplotlib.pyplot import xlabel, ylabel
 from sphinx.addnodes import index
 
 #5 Pandas
 #5.1
 df = pd.read_csv("animals.csv", index_col ="name")
+df2 = pd.read_csv("height.csv")
 print(df.head())
 
 #5.2 Цена крокодила
@@ -19,5 +23,20 @@ max_iq = df["iq_score"].max()
 print("Максимальный iq: ",df[df["iq_score"] == max_iq])
 
 #5.5 Наименее дорогие коричневые животные
-min_price = df["shop_price"].min()
+min_price = df[df["color"] == "brown"]["shop_price"].min()
 print("Наименее дорогие коричневые животные: ",df[(df["color"] == "brown") & (df["shop_price"] == min_price)])
+
+#5.6
+print("Среднее значение IQ по ареалу:", df.groupby("habitat")["iq_score"].mean())
+
+#5.7
+df = df.merge(df2, left_index= True, right_on= "name")
+print(df.head())
+
+#5.8
+fig, axs = plt.subplots(1, figsize = (10,3)) # По какой то причине получаются нечитабельные данные в гистограме
+axs.hist(df[df["habitat"] == "air"])
+axs.set_title("Летающие животные")
+axs.set_xlabel("name")
+axs.set_ylabel("height")
+plt.show()
