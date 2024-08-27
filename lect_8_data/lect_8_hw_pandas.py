@@ -1,10 +1,6 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from IPython.core.pylabtools import figsize
-from holoviews.plotting.bokeh.styles import alpha
-from matplotlib.pyplot import xlabel, ylabel
-from sphinx.addnodes import index
+
 
 #5 Pandas
 #5.1
@@ -31,7 +27,7 @@ print("Среднее значение IQ по ареалу:", df.groupby("habit
 
 #5.7
 df = df.merge(df2, left_index= True, right_on= "name")
-print(df.head())
+print(df.head(3))
 
 #5.8
 fig, axs = plt.subplots(1, figsize = (10,3)) # По какой то причине получаются нечитабельные данные в гистограме
