@@ -34,5 +34,5 @@ bmi = weight / (hight/100) ** 2
 normal_bmi = np.sum((bmi >= 18) & (bmi <= 25))
 print(normal_bmi) """
 
-"""
+
 
